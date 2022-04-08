@@ -3,7 +3,7 @@
 ```shell
 mkdir shortLink
 cd shortLink
-wget https://github.com/EduarteXD/UrlShorter/releases/download/v1.0.1/server.zip
+wget https://github.com/EduarteXD/UrlShorter/releases/download/v1.0.2/server.zip
 unzip server.zip
 rm -rf server.zip
 ```
