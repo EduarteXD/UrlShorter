@@ -2,8 +2,8 @@
 包含一个基本的短链接生成器和历史记录,并可抓取对象网站标题
 <details>
 	<summary>展开截图</summary>
-	<img src="https://user-images.githubusercontent.com/54500106/162447639-fdd7d3a3-a791-4de5-b18d-ea4a45b1c819.png" />
 	<img src="https://user-images.githubusercontent.com/54500106/162463349-23949c42-61e1-44aa-a409-4754bbff049a.png" />
+	<img src="https://user-images.githubusercontent.com/54500106/162463907-6f11322e-714b-4cba-97c3-0d71707e3424.png" />
 </details>
 
 # 下载
