@@ -1,10 +1,9 @@
 import React from 'react'
 import { Card, CardContent, Typography, IconButton, Link, Tooltip } from '@mui/material'
-import { Share, ChevronRight } from '@mui/icons-material';
+import { Share, Menu, ChevronRight } from '@mui/icons-material';
 
 function LinkCard(hooks) 
 {
-
     const copyLink = () => {
         var textarea = document.createElement('textarea')
         document.body.appendChild(textarea)
@@ -14,6 +13,10 @@ function LinkCard(hooks)
         textarea.select()
         document.execCommand('copy', true)
         hooks.setMsg(1)
+    }
+
+    const goto = () => {
+        window.location.replace(document.URL + hooks.data.name)
     }
 
     return (
@@ -31,12 +34,17 @@ function LinkCard(hooks)
                 </Typography>
                 <Tooltip title="详细信息">
                     <IconButton onClick={() => {hooks.ChangePage(2, {ok: '1', dist: hooks.data.name})}}>
-                        <ChevronRight />
+                        <Menu />
                     </IconButton>
                 </Tooltip>
                 <Tooltip title="复制链接">
                     <IconButton onClick={copyLink}>
                         <Share />
+                    </IconButton>
+                </Tooltip>
+                <Tooltip title="前往">
+                    <IconButton onClick={goto}>
+                        <ChevronRight />
                     </IconButton>
                 </Tooltip>
              </CardContent>

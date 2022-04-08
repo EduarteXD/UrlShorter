@@ -39,13 +39,14 @@ function App ()
         break;
     }
   }
+
   return (
     <>
       <MainElem />
       <Paper
-        sx={{ 
-          width: '17%', 
-          position: 'fixed', 
+        sx={{
+          position: 'fixed',
+          maxWidth: 'fit-content',
           margin: 'auto', 
           left: '0',
           right: '0',
