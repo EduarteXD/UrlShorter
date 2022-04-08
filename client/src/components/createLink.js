@@ -6,8 +6,15 @@ function CreateLink(hooks)
 {
     const [loading, changeLoadingStat] = React.useState(false)
     const [error, setError] = React.useState(false)
+    const [forbid, setForbid] = React.useState(false)
 
     const submitLink = () => {
+        var selfURL = new RegExp(window.location.host)
+        if (selfURL.test(document.getElementById('linkTo').value))
+        {
+            setForbid(true)
+            return
+        }
         changeLoadingStat(true)
         var preg = /(http:\/\/|https:\/\/)/g
         if (!preg.test(document.getElementById('linkTo').value))
@@ -51,6 +58,13 @@ function CreateLink(hooks)
         setError(false);
     }
 
+    const handleCloseForbid = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        setForbid(false);
+    }
+
     const action = (
         <>
             <IconButton
@@ -58,6 +72,19 @@ function CreateLink(hooks)
                 aria-label="close"
                 color="inherit"
                 onClick={handleClose}
+            >
+                <CloseIcon fontSize="small" />
+            </IconButton>
+        </>
+    )
+
+    const actionForbid = (
+        <>
+            <IconButton
+                size="small"
+                aria-label="close"
+                color="inherit"
+                onClick={handleCloseForbid}
             >
                 <CloseIcon fontSize="small" />
             </IconButton>
@@ -117,6 +144,13 @@ function CreateLink(hooks)
                 onClose={handleClose}
                 message="创建失败！"
                 action={action}
+            />
+            <Snackbar 
+                open={forbid}
+                autoHideDuration={3000}
+                onClose={handleCloseForbid}
+                message="请求不合法！"
+                action={actionForbid}
             />
         </Box>
     )
