@@ -6,7 +6,7 @@ function CreateLink(hooks)
 {
     const [loading, changeLoadingStat] = React.useState(false)
     const [error, setError] = React.useState(false)
-    
+
     const submitLink = () => {
         changeLoadingStat(true)
         fetch('api/create/', {
@@ -32,6 +32,11 @@ function CreateLink(hooks)
             console.error(error)
         })
         
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        submitLink()
     }
 
     const handleClose = (event, reason) => {
@@ -64,6 +69,7 @@ function CreateLink(hooks)
                 top: '35%',
                 textAlign: 'center'
             }}      
+            onSubmit={handleSubmit}
             >
             <Box>
                 <TextField
@@ -72,7 +78,8 @@ function CreateLink(hooks)
                     variant="standard"
                     sx={{
                     width: '66%'
-                    }} />
+                    }}
+                />
             </Box>
             <Box
                 sx={{
