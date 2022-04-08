@@ -56,3 +56,6 @@ SQL_NAME=
 npm install forever && forever start server.js
 ```
 运行服务器
+
+# 更新
+删除除根目录.env之外所有文件重新下载最新版本即可
