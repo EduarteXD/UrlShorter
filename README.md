@@ -39,4 +39,9 @@ SQL_NAME=
 ```
 如果开启ssl，请将证书存放在```./cert```文件夹中，命名为cert.pem和key.pem
 
-运行```npm install forever && npm start```运行服务器
+运行
+```
+screen -S shortlink
+node server.js
+```
+运行服务器
