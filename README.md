@@ -16,7 +16,7 @@ unzip server.zip
 rm -rf server.zip
 ```
 # 安装
-## 初始化数据库
+## 初始化Mysql数据库
 ```sql
 CREATE TABLE `linktable` (
 	`name` TEXT NULL DEFAULT NULL,
