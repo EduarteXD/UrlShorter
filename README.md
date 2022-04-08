@@ -1,3 +1,12 @@
+# 下载
+运行
+```shell
+mkdir shortLink
+cd shortLink
+wget https://github.com/EduarteXD/UrlShorter/releases/download/v1.0.0/release-1.0.0.zip
+unzip release-1.0.0.zip
+rm -rf release-1.0.0.zip
+```
 # 安装
 ## 初始化数据库
 ```sql
