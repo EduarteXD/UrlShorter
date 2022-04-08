@@ -3,7 +3,7 @@
 ```shell
 mkdir shortLink
 cd shortLink
-wget https://github.com/EduarteXD/UrlShorter/releases/download/v1.0.1/server.zip
+wget https://github.com/EduarteXD/UrlShorter/releases/download/v1.0.2/server.zip
 unzip server.zip
 rm -rf server.zip
 ```
@@ -20,7 +20,7 @@ CREATE TABLE `linktable` (
 ENGINE=InnoDB;
 ```
 ## 配置环境变量
-修改.env文件：
+创建并编辑.env文件：
 ```
 # http端口
 APP_PORT=80
