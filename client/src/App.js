@@ -1,5 +1,5 @@
 import React from 'react'
-import { BottomNavigation, BottomNavigationAction, Box } from '@mui/material'
+import { BottomNavigation, BottomNavigationAction, Paper } from '@mui/material'
 import { Create, History } from '@mui/icons-material'
 
 import './main.css'
@@ -12,6 +12,7 @@ function App ()
 {
   document.title = '创建短链接'
   const [val, setVal] = React.useState(0)
+  const [alertShow, setAlert] = React.useState(1)
   const [dist, setDist] = React.useState('')
 
   var page = (value, dat) => {
@@ -28,7 +29,7 @@ function App ()
         )
       case 1:
         return (
-          <HistoryPage ChangePage={page} />
+          <HistoryPage ChangePage={page} setAlert={setAlert} alertShow={alertShow}/>
         )
       case 2:
         return (
@@ -41,15 +42,16 @@ function App ()
   return (
     <>
       <MainElem />
-      <Box 
+      <Paper
         sx={{ 
-          width: '20%', 
+          width: '17%', 
           position: 'fixed', 
           margin: 'auto', 
           left: '0',
           right: '0',
           bottom: '5vh' 
         }}
+        elevation={3}
       >
         <BottomNavigation
           showLabels
@@ -58,10 +60,10 @@ function App ()
             setVal(newVal)
           }}
         >
-          <BottomNavigationAction label="创建短链接" icon={ <Create /> }/>
-          <BottomNavigationAction label="历史创建" icon={ <History /> } />
+          <BottomNavigationAction label="创建" icon={ <Create /> }/>
+          <BottomNavigationAction label="历史" icon={ <History /> } />
         </BottomNavigation>
-      </Box>
+      </Paper>
     </>
   )
 }

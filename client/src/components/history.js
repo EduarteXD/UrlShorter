@@ -9,7 +9,6 @@ function HistoryPage(hooks)
     const [showMsg, setMsg] = React.useState(0)
     const [rendered, setReady] = React.useState(0)
     const [requestStat, setReq] = React.useState(0)
-    const [alertShow, setAlert] = React.useState(1)
 
     const getHistory = () => {
         fetch('api/recent')
@@ -54,10 +53,10 @@ function HistoryPage(hooks)
 
     return (
         <>
-            <Collapse in={alertShow}>
+            <Collapse in={hooks.alertShow}>
                 <Alert 
                     severity="info" 
-                    onClose={() => {setAlert(0)}}
+                    onClose={() => {hooks.setAlert(0)}}
                 >
                     历史记录最多只会显示最近创建的20个项目
                 </Alert>

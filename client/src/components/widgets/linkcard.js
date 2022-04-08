@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, CardContent, Typography, IconButton, Link } from '@mui/material'
+import { Card, CardContent, Typography, IconButton, Link, Tooltip } from '@mui/material'
 import { Share, ChevronRight } from '@mui/icons-material';
 
 function LinkCard(hooks) 
@@ -29,12 +29,16 @@ function LinkCard(hooks)
                         {hooks.data.to.substring(0, 20)}{hooks.data.to.length > 20 ? (<>...</>) : (<></>)}
                     </Link>
                 </Typography>
-                <IconButton onClick={() => {hooks.ChangePage(2, {ok: '1', dist: hooks.data.name})}}>
-                    <ChevronRight />
-                </IconButton>
-                <IconButton onClick={copyLink}>
-                    <Share />
-                </IconButton>
+                <Tooltip title="详细信息">
+                    <IconButton onClick={() => {hooks.ChangePage(2, {ok: '1', dist: hooks.data.name})}}>
+                        <ChevronRight />
+                    </IconButton>
+                </Tooltip>
+                <Tooltip title="复制链接">
+                    <IconButton onClick={copyLink}>
+                        <Share />
+                    </IconButton>
+                </Tooltip>
              </CardContent>
         </Card>
     )

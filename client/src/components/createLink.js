@@ -9,6 +9,11 @@ function CreateLink(hooks)
 
     const submitLink = () => {
         changeLoadingStat(true)
+        var preg = /(http:\/\/|https:\/\/)/g
+        if (!preg.test(document.getElementById('linkTo').value))
+        {
+            document.getElementById('linkTo').value = 'http://' + document.getElementById('linkTo').value
+        }
         fetch('api/create/', {
             body: JSON.stringify({ linkTo: document.getElementById('linkTo').value }),
             method: 'POST',

@@ -77,7 +77,7 @@ app.post('/api/statistics', (req, res) => {
 
 app.post('/api/query', (req, res) => {
     const queryParams = [req.body.id]
-    connection.query('select `create`, `title` from `linktable` where `name` = ?', queryParams, (err, rows) => {
+    connection.query('select `create`, `title`, `to` from `linktable` where `name` = ?', queryParams, (err, rows) => {
         if (err) 
         {
             res.json({ ok: '0' })
@@ -86,7 +86,8 @@ app.post('/api/query', (req, res) => {
         res.json({
             ok: '1',
             title: rows[0].title,
-            createTime: rows[0].create
+            createTime: rows[0].create,
+            to: rows[0].to
         })
     })
 })

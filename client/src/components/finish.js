@@ -1,7 +1,7 @@
 import React from 'react'
 import moment from 'moment'
 import { Box, Skeleton, Paper, Link, Accordion, AccordionSummary, AccordionDetails, Typography } from '@mui/material'
-import { ExpandMore } from '@mui/icons-material'
+import { ExpandMore, Timeline, InfoOutlined } from '@mui/icons-material'
 
 function FinishPage(hooks)
 {
@@ -24,7 +24,8 @@ function FinishPage(hooks)
             {
                 setDetail({
                     title: data.title,
-                    createTime: data.createTime
+                    createTime: data.createTime,
+                    to: data.to
                 })
                 setReady(1)
             }
@@ -61,11 +62,10 @@ function FinishPage(hooks)
 
     return (
         <Box>
-            <Paper 
+            <Paper
                 elevation={3}
                 sx={{
                     width: '55vw',
-                    height: '10vh',
                     position: 'absolute',
                     margin: 'auto',
                     top: '16vh',
@@ -73,21 +73,16 @@ function FinishPage(hooks)
                     right: '0',
                 }}
             >
-                <Box
-                    sx={{
-                        margin: 'auto',
-                        marginTop: '0.2vh',
-                        marginLeft: '1vw',
-                        padding: '10px 10px 10px 10px'
-                    }}
-                >
+                <Typography>
                     <Link 
                         href={document.URL + hooks.dist}
-                        sx={{
-                            fontSize: '5vh'
-                        }}
-                    >{document.URL + hooks.dist}</Link>
-                </Box>
+                            sx={{
+                                fontSize: '5vh',
+                                padding: '20px 20px 20px 20px'
+                            }}
+                        >{window.location.host + '/' + hooks.dist}
+                    </Link>
+                </Typography>
             </Paper>
             {
                 rendered ? (
@@ -118,11 +113,18 @@ function FinishPage(hooks)
                                         aria-controls="panel1-content"
                                         id="panel1-header"
                                     >
-                                        <Typography>详细信息</Typography>
+                                        <InfoOutlined />
+                                        <Typography>&nbsp;详细信息</Typography>
                                     </AccordionSummary>
                                     <AccordionDetails>
                                         <Typography>
                                             创建时间：{moment(detail.createTime).format('yyyy-MM-DD dd hh:mm a zzz')}
+                                        </Typography>
+                                        <Typography>
+                                            指向：
+                                            <Link href={detail.to}>
+                                                {detail.to}
+                                            </Link>
                                         </Typography>
                                     </AccordionDetails>
                                 </Accordion>
@@ -132,7 +134,8 @@ function FinishPage(hooks)
                                         aria-controls="panel2-content"
                                         id="panel2-header"
                                     >
-                                        <Typography>统计</Typography>
+                                        <Timeline />
+                                        <Typography>&nbsp;统计</Typography>
                                     </AccordionSummary>
                                     <AccordionDetails>
                                         <Typography>
