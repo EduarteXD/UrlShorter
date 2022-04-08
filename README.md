@@ -1,5 +1,5 @@
 # 功能
-包含一个基本的短链接生成器和历史记录
+包含一个基本的短链接生成器和历史记录,并可抓取对象网站标题
 <details>
 	<summary>展开截图</summary>
 	<img src="https://user-images.githubusercontent.com/54500106/162447587-c3fc5fee-711b-48db-b0d5-6a339c804e83.png" />
