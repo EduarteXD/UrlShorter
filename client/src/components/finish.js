@@ -86,7 +86,7 @@ function FinishPage(hooks)
                         sx={{
                             fontSize: '5vh'
                         }}
-                    >https://go.oxdl.cn/{hooks.dist}</Link>
+                    >{document.URL + hooks.dist}</Link>
                 </Box>
             </Paper>
             {
