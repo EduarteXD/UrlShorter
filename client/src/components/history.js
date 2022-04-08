@@ -1,6 +1,6 @@
 import React from 'react'
 import LinkCard from './widgets/linkcard'
-import { Box, Grid, CircularProgress, Alert, IconButton, Snackbar } from '@mui/material'
+import { Box, Grid, CircularProgress, Alert, IconButton, Snackbar, Collapse } from '@mui/material'
 import { Close } from '@mui/icons-material'
 
 function HistoryPage(hooks)
@@ -9,6 +9,7 @@ function HistoryPage(hooks)
     const [showMsg, setMsg] = React.useState(0)
     const [rendered, setReady] = React.useState(0)
     const [requestStat, setReq] = React.useState(0)
+    const [alertShow, setAlert] = React.useState(1)
 
     const getHistory = () => {
         fetch('api/recent')
@@ -53,7 +54,14 @@ function HistoryPage(hooks)
 
     return (
         <>
-            <Alert severity="info">历史记录最多只会显示最近创建的20个项目</Alert>
+            <Collapse in={alertShow}>
+                <Alert 
+                    severity="info" 
+                    onClose={() => {setAlert(0)}}
+                >
+                    历史记录最多只会显示最近创建的20个项目
+                </Alert>
+            </Collapse>
             <Box
                 sx={{ 
                     width: '70vw',
