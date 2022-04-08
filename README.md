@@ -3,9 +3,9 @@
 ```shell
 mkdir shortLink
 cd shortLink
-wget https://github.com/EduarteXD/UrlShorter/releases/download/v1.0.0/release-1.0.0.zip
-unzip release-1.0.0.zip
-rm -rf release-1.0.0.zip
+wget https://github.com/EduarteXD/UrlShorter/releases/download/v1.0.1/server.zip
+unzip server.zip
+rm -rf server.zip
 ```
 # 安装
 ## 初始化数据库
@@ -41,7 +41,6 @@ SQL_NAME=
 
 运行
 ```
-screen -S shortlink
-node server.js
+npm install forever && forever start server.js
 ```
 运行服务器
