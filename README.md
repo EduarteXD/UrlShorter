@@ -20,7 +20,7 @@ CREATE TABLE `linktable` (
 ENGINE=InnoDB;
 ```
 ## 配置环境变量
-修改.env文件：
+创建并编辑.env文件：
 ```
 # http端口
 APP_PORT=80
