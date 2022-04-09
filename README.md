@@ -11,7 +11,7 @@
 ```shell
 mkdir shortLink
 cd shortLink
-wget https://github.com/EduarteXD/UrlShorter/releases/download/v1.0.3/server.zip
+wget https://github.com/EduarteXD/UrlShorter/releases/download/v1.0.4/server.zip
 unzip server.zip
 rm -rf server.zip
 ```
