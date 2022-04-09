@@ -1,12 +1,12 @@
-import express from 'express'
 import bodyParser from 'body-parser'
-import mysql from 'mysql'
-import dotenv from 'dotenv'
+import * as cheerio from 'cheerio'
 import cors from 'cors'
-import request from 'request'
-import cheerio from 'cheerio'
-import https from 'https'
+import dotenv from 'dotenv'
+import express from 'express'
 import fs from 'fs'
+import https from 'https'
+import mysql from 'mysql'
+import request from 'request'
 
 dotenv.config()
 const app = express()
@@ -123,7 +123,7 @@ app.post('/api/create', (req, res) => {
                     throw err
                 }
                 var dist = base62(rows[0]['count(*)'] + 1279)
-                request({ url: req.body.linkTo, timeout: 1000, rejectUnauthorized: false }, (err, response, body) => {
+                request({ url: req.body.linkTo, timeout: 1000, rejectUnauthorized: false, encoding : null }, (err, response, body) => {
                     if (err) 
                     {
                         const insertParams = [dist, req.body.linkTo, '标题抓取失败']
@@ -141,8 +141,10 @@ app.post('/api/create', (req, res) => {
                     }
                     else
                     {
+                        body.setEncoding('utf8')
+                        console.log(body)
                         var content = cheerio.load(body)
-                        var title = content('head').find('title').text()
+                        var title = content('title').html()
                         const insertParams = [dist, req.body.linkTo, title]
                         connection.query('insert into `linktable` (`name`, `to`, `title`) values (?, ?, ?)', insertParams, (err, rows) => {
                             if (err) 

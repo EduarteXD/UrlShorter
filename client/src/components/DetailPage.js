@@ -1,12 +1,12 @@
-import React from 'react'
+import { ExpandMore, InfoOutlined, Timeline } from '@mui/icons-material'
+import { Accordion, AccordionDetails, AccordionSummary, Box, Link, Paper, Skeleton, Typography } from '@mui/material'
 import moment from 'moment'
-import { Box, Skeleton, Paper, Link, Accordion, AccordionSummary, AccordionDetails, Typography } from '@mui/material'
-import { ExpandMore, Timeline, InfoOutlined } from '@mui/icons-material'
+import React from 'react'
 
-function FinishPage(hooks)
+const DetailPage = (hooks) =>
 {
-    const [rendered, setReady] = React.useState(0)
-    const [requestStat, setReq] = React.useState(0)
+    const [readyToRender, setReady] = React.useState(false)
+    const [requestStat, setReq] = React.useState(false)
     const [statistics, setStatistics] = React.useState({})
     const [detail, setDetail] = React.useState({})
 
@@ -27,7 +27,7 @@ function FinishPage(hooks)
                     createTime: data.createTime,
                     to: data.to
                 })
-                setReady(1)
+                setReady(true)
             }
         })
         .catch((error) => {
@@ -54,9 +54,9 @@ function FinishPage(hooks)
         })
     }
 
-    if (requestStat === 0)
+    if (!requestStat)
     {
-        setReq(1)
+        setReq(true)
         getDetail(hooks.dist)
     }
 
@@ -70,7 +70,7 @@ function FinishPage(hooks)
                     margin: 'auto',
                     top: '16vh',
                     left: '0',
-                    right: '0',
+                    right: '0'
                 }}
             >
                 <Typography>
@@ -85,7 +85,7 @@ function FinishPage(hooks)
                 </Typography>
             </Paper>
             {
-                rendered ? (
+                readyToRender ? (
                     <>
                         <Box
                             sx={{
@@ -180,4 +180,4 @@ function FinishPage(hooks)
     )
 }
 
-export default FinishPage
+export default DetailPage
