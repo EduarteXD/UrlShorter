@@ -11,7 +11,7 @@ const LinkCard = (hooks) => {
     textarea.value = document.URL + hooks.data.name
     textarea.select()
     document.execCommand("copy", true)
-    hooks.setMsg(1)
+    hooks.setMsg(true)
   }
 
   const goto = () => {
@@ -31,7 +31,7 @@ const LinkCard = (hooks) => {
         <Tooltip title="详细信息">
           <IconButton
             onClick={() => {
-              hooks.ChangePage(2, { ok: "1", dist: hooks.data.name });
+              hooks.changePage(2, { ok: "1", dist: hooks.data.name });
             }}
           >
             <Menu />

@@ -9,10 +9,6 @@ const HistoryPage = (hooks) => {
   const [readyToRender, setReady] = React.useState(false)
   const [requestStat, setReq] = React.useState(false)
 
-  //----------------------------------------------------
-  const [showAlert, setAlert] = React.useState(true)
-  //----------------------------------------------------
-
   const getHistory = () => {
     fetch("api/recent")
       .then((response) => response.json())
@@ -54,12 +50,11 @@ const HistoryPage = (hooks) => {
 
   return (
     <>
-      <Collapse in={showAlert/*hooks.alertShow*/}>
+      <Collapse in={hooks.showAlert}>
         <Alert
           severity="info"
           onClose={() => {
-            setAlert(false)
-            // hooks.setAlert(false)
+            hooks.setAlert(false)
           }}
         >
           历史记录最多只会显示最近创建的20个项目
@@ -83,7 +78,7 @@ const HistoryPage = (hooks) => {
                   <Grid item xs={12} sm={3} key={key}>
                     <LinkCard
                       data={dat}
-                      ChangePage={hooks.ChangePage}
+                      changePage={hooks.changePage}
                       setMsg={setMsg}
                     />
                   </Grid>

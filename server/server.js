@@ -123,7 +123,12 @@ app.post('/api/create', (req, res) => {
                     throw err
                 }
                 var dist = base62(rows[0]['count(*)'] + 1279)
-                request({ url: req.body.linkTo, timeout: 1000, rejectUnauthorized: false, encoding : null }, (err, response, body) => {
+                request({
+                    url: req.body.linkTo, 
+                    timeout: 3000, 
+                    rejectUnauthorized: false, 
+                    gzip: true
+                }, (err, response, body) => {
                     if (err) 
                     {
                         const insertParams = [dist, req.body.linkTo, '标题抓取失败']
@@ -141,7 +146,6 @@ app.post('/api/create', (req, res) => {
                     }
                     else
                     {
-                        body.setEncoding('utf8')
                         console.log(body)
                         var content = cheerio.load(body)
                         var title = content('title').html()

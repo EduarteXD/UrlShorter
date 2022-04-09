@@ -11,7 +11,7 @@ import DetailPage from "./components/DetailPage"
 const App = () => {
   document.title = "创建短链接"
   const [page, setPage] = React.useState(0)
-  // const [alertShow, setAlert] = React.useState(true)
+  const [showAlert, setAlert] = React.useState(true)
   const [dist, setDist] = React.useState("")
 
   const changePage = (value, dat) => {
@@ -19,7 +19,7 @@ const App = () => {
     setDist(dat.dist)
   }
 
-  const MainElem = () => {
+  /* const MainElem = () => {
     switch (page) {
       case 0:
         return (
@@ -40,11 +40,26 @@ const App = () => {
       default:
         break
     }
-  }
+  }*/
 
   return (
     <>
-      <MainElem />
+      {
+        page === 0 &&
+          <CreateLinkPage changePage={changePage} />
+      }
+      {
+        page === 1 &&
+          <HistoryPage
+            changePage={changePage}
+            setAlert={setAlert}
+            showAlert={showAlert}
+          />
+      }
+      {
+        page === 2 &&
+          <DetailPage dist={dist} />
+      }
       <Paper
         sx={{
           position: "fixed",

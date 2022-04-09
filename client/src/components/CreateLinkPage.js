@@ -30,7 +30,7 @@ const CreateLinkPage = (hooks) => {
       .then((data) => {
         changeLoadingStat(false)
         if (data.ok === "1") {
-          hooks.ChangePage(2, { ok: "1", dist: data.dist })
+          hooks.changePage(2, { ok: "1", dist: data.dist })
         } else {
           setError(true)
         }
