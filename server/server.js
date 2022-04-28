@@ -176,7 +176,7 @@ app.get('/', (req, res) => {
 
 app.get('/:id', (req, res) => {
     const queryParams = [req.params.id]
-    connection.query('select `to` from `linktable` where name = ?', queryParams, (err, rows) => {
+    connection.query('select `to` from `linktable` where binary name = ?', queryParams, (err, rows) => {
         if (rows[0])
         {
             connection.query('update `linktable` set `clicks` = `clicks` + 1 where name = ?', queryParams, (err) => {
